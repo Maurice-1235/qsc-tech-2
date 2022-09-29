@@ -1,11 +1,11 @@
 import ResponsiveAppBar from "../components/navbar";
-function Credit() {
+function CreditPage() {
   return (
     <div>
       <ResponsiveAppBar title="CREDIT"></ResponsiveAppBar>;
-      <h1>test</h1>
+      {/* <h1>test</h1> */}
     </div>
   );
 }
 //backend
-export default Credit;
+export default CreditPage;

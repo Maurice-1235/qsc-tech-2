@@ -60,21 +60,21 @@
   border: 2px solid rgba(0, 0, 0, 0.18) !important;
 }
 .btn {
-  width: 20%;
-  cursor: pointer;
-  border-radius: 5em;
-  color: #fff;
-  background: linear-gradient(to right, #9c27b0, #e040fb);
-  border: 0;
-  padding-left: 0px;
-  padding-right: 0px;
-  padding-bottom: 10px;
-  padding-top: 10px;
-  font-family: "Ubuntu", sans-serif;
-  margin-left: 40%;
-  font-size: 13px;
-  box-shadow: 0 0 20px 1px rgba(0, 0, 0, 0.04);
-}
+    width: 20%;
+    cursor: pointer;
+    border-radius: 5em;
+    color: #fff;
+    background: linear-gradient(to right, #9c27b0, #e040fb);
+    border: 0;
+    padding-left: 0px;
+    padding-right: 0px;
+    padding-bottom: 10px;
+    padding-top: 10px;
+    font-family: "Ubuntu", sans-serif;
+    margin-left: 40%;
+    font-size: 13px;
+    box-shadow: 0 0 20px 1px rgba(0, 0, 0, 0.04);
+  }
 .link{
     text-decoration: none;
     color: #FFF;
