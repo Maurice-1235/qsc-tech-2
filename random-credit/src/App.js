@@ -26,14 +26,4 @@ function App() {
     </BrowserRouter>
   );
 }
-// function Login(){
-//   return <div>
-//     {/* <Link to='/lesson' className={classes.link} >
-//         <p className={classes.btn} align="center">
-//           {/* <Link to = "/lesson">Login</Link> */}
-//           Login
-//         {/* </p> */}
-//         {/* </Link> */} 
-//   </div>
-// }
 export default App;

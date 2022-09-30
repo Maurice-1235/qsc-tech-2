@@ -1,12 +1,8 @@
+//参考了w3school，material UI,cheatsheet 等等
 import classes from "./form.module.css";
-import { useNavigate  } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import React, { useEffect, useState } from "react";
-import ReactDOM from "react-dom";
-import { propTypes } from "react-bootstrap/esm/Image";
 import FormInput from "./formInput";
-
-// const ErrorMessage = (name) =>
-
 
 function Form() {
   const [values, setValues] = useState({
@@ -22,10 +18,10 @@ function Form() {
       name: "username",
       type: "text",
       placeholder: "Name",
-      errorMessage:
-        "Name should be string",
+      errorMessage: "Name should not be empty",
       label: "Username",
-      pattern: "^[a-zA-Z0-9_.-]*$",
+      // pattern: "^[a-zA-Z0-9_.-]*$",
+      pattern: "*",
       required: true,
     },
     {
@@ -41,40 +37,43 @@ function Form() {
   ];
 
   const getHello = async () => {
-    const response = await fetch('http://localhost:9999/hello');
+    const response = await fetch("http://localhost:9999/hello");
     const json = await response.json();
     alert(json.msg);
-  }
+  };
 
   const login = async (id, name) => {
-    const response = await fetch('http://localhost:9999/login', {
-      method: 'POST',
+    const response = await fetch("http://localhost:9999/login", {
+      method: "POST",
       headers: {
-        'Content-Type': 'application/json'
+        "Content-Type": "application/json",
       },
-      body: JSON.stringify({id: parseInt(id), name: name})
+      body: JSON.stringify({ id: parseInt(id), name: name }),
+      credentials: "include",
+    });
+    const json = await response.json();
+    console.log("json", json);
+    if (json.msg === "ok") {
+      navigate("/lesson");
+    } else if (json.msg === "unknown user format") {
+      navigate("/");
+    }
+  };
+
+  const autoLogin = async () => {
+    const response = await fetch("http://localhost:9999/login", {
+      credentials: "include",
     });
     const json = await response.json();
     console.log(json);
-    if(json.msg === 'ok'){
+    if (json.msg === "ok") {
       navigate("/lesson");
     }
-    else if(json.msg==='unknown user format'){
-      navigate("/")
-    }
-  }
-
-  const autoLogin = async () => {
-    const response = await fetch('http://localhost:9999/login');
-    const json = await response.json();
-    console.log(json);
-    if(json.msg === 'ok'){
-      navigate("/lesson");
-    }
-  }
+  };
 
   useEffect(() => {
-    autoLogin()
+    autoLogin();
+    // eslint-disable-next-line
   }, []);
 
   return (
@@ -96,20 +95,20 @@ function Form() {
             }
           />
         ))}
-        {/* {ErrorMessage("id")} */}
         {/* <Link to="/lesson" className={classes.link}> */}
-          <button className={classes.btn} align="center" onClick={()=> login(values.id, values.username)}>
-            Login
-          </button>
-         
-          {/* {isSubmitted ? <div>User is successfully logged in</div> : } */}
+        <button
+          className={classes.lgn}
+          onClick={() => login(values.id, values.username)}
+        >
+          Login
+        </button>
+
         {/* </Link> */}
-        <button className={classes.btn} onClick={()=>getHello()}>
-            Hello
+        <button className={classes.hello} onClick={() => getHello()}>
+          Hello
         </button>
       </form>
     </div>
-    //  </BrowserRouter>
   );
 }
 export default Form;

@@ -14,6 +14,9 @@ app.use((req, res, next) => {
 });
 app.get("/login", function (req, res) {
   const user = req.signedCookies["fakeUser"];
+  // console.log("request",req);
+  // console.log("cookies",req.signedCookies);
+  // console.log("user",user);
   if (user?.name && user?.id) {
     res.cookie("fakeUser", user, { maxAge: config.cookieAge, signed: true });
     res.status(200).send(
@@ -32,7 +35,7 @@ app.get("/login", function (req, res) {
 });
 app.post("/login", function (req, res) {
   const user = req.body;
-  console.log(user);
+  // console.log(user);
   if (
     !user.id ||
     !user.name ||
